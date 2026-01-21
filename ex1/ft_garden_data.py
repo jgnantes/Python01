@@ -4,6 +4,7 @@ class Plant:
         self.height = height
         self.age = age
 
+
 if __name__ == "__main__":
     print("=== Garden Plant Registry ===")
     Rose = Plant("Rose", 25, 30)

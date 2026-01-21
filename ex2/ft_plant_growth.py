@@ -3,18 +3,25 @@ class Plant:
         self.name = name
         self.height = height
         self.age = age
-    def grow(self, growth):
-        self.height += growth
-    def age_week(self):
-        self.age += 6
+
+    def grow(self, growth_rate: int, days: int):
+        for _ in range(days):
+            self.height += growth_rate
+
+    def get_older(self, days: int):
+        for _ in range(days):
+            self.age += 1
+
+    def get_info(self, days: int):
+        print(f"=== Day {days + 1} ===")
+        print(f"{self.name}: {self.height}cm, {self.age} days old")
+
 
 if __name__ == "__main__":
     Rose = Plant("Rose", 25, 30)
-    growth = 6
-    print("=== Day 1 ===")
-    print(f"{Rose.name}: {Rose.height}cm, {Rose.age} days old")
-    Rose.grow(growth)
-    Rose.age_week()
-    print("=== Day 7 ===")
-    print(f"{Rose.name}: {Rose.height}cm, {Rose.age} days old")
-    print(f"Growth this week: +{growth}cm")
+    Rose.get_info(0)
+    days = 6
+    growth_rate = 1
+    Rose.get_older(days)
+    Rose.grow(growth_rate, days)
+    Rose.get_info(days)
