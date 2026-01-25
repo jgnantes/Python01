@@ -8,13 +8,13 @@ class Plant:
 
     def age(self, time_passed: int):
         """Changes a Plant instance's age based on time passed in days"""
-        for _ in range(days):
+        for _ in range(time_passed):
             self.days += 1
 
     def grow(self, growth_rate: int, time_passed: int):
         """Changes a Plant instance's height based on a given
         growth rate (cm/day) and time_passed passed in days"""
-        for _ in range(days):
+        for _ in range(time_passed):
             self.height += growth_rate
 
     def get_info(self, days: int):
@@ -30,17 +30,17 @@ if __name__ == "__main__":
     Rose.get_info(0)
     Sunflower.get_info(0)
     Cactus.get_info(0)
-    days = 6
+    time_passed = 6
     growth_rate = 1
-    Rose.age(days)
-    Rose.grow(growth_rate, days)
+    Rose.age(time_passed)
+    Rose.grow(growth_rate, time_passed)
     growth_rate = 3
-    Sunflower.age(days)
-    Sunflower.grow(growth_rate, days)
+    Sunflower.age(time_passed)
+    Sunflower.grow(growth_rate, time_passed)
     growth_rate = 0
-    Cactus.age(days)
-    Cactus.grow(growth_rate, days)
-    print(f"=== Day {days + 1} ===")
-    Rose.get_info(days)
-    Sunflower.get_info(days)
-    Cactus.get_info(days)
+    Cactus.age(time_passed)
+    Cactus.grow(growth_rate, time_passed)
+    print(f"=== Day {time_passed + 1} ===")
+    Rose.get_info(time_passed)
+    Sunflower.get_info(time_passed)
+    Cactus.get_info(time_passed)
