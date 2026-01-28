@@ -9,6 +9,15 @@ class Plant:
         self.growth_rate = growth_rate
 
 
+def ft_plant_factory(plant_list: list):
+    i = 0
+    print("=== Plant Factory Output ===")
+    for plant in plant_list:
+        print(f"Created: {plant.name} ({plant.height}cm, {plant.age} days)")
+        i += 1
+    print("\nTotal plants created:", i)
+
+
 if __name__ == "__main__":
     plant_list = [
         Plant("Rose", 25, 30, 1),
@@ -17,9 +26,4 @@ if __name__ == "__main__":
         Plant("Sunflower", 80, 45, 3),
         Plant("Fern", 15, 120, 2),
     ]
-    i = 0
-    print("=== Plant Factory Output ===")
-    for plant in plant_list:
-        print(f"Created: {plant.name} ({plant.height}cm, {plant.age} days)")
-        i += 1
-    print("\nTotal plants created:", i)
+    ft_plant_factory(plant_list)
