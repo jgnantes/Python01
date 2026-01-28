@@ -1,12 +1,10 @@
 class Plant:
     """Represents a plant in the garden with basic attributes"""
-    def __init__(self, name, height, age, growth_rate):
-        """Initialize a Plant with name, height (cm), age in days
-        and growth_rate (cm/days)"""
+    def __init__(self, name, height, age):
+        """Initialize a Plant with name, height (cm), age in days"""
         self.name = name
         self.height = height
         self.age = age
-        self.growth_rate = growth_rate
 
 
 def ft_plant_factory(plant_list: list):
