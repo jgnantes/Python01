@@ -24,28 +24,33 @@ class Flower(SecurePlant):
 class Tree(SecurePlant):
     """Represents a tree as a subclass of SecurePlant"""
     def __init__(self, name, height, age, trunk_diameter):
-        """Initialize a Tree with SecurePlant attributes as well as trunk diameter (in cm)"""
+        """Initialize a Tree with SecurePlant attributes
+        as well as trunk diameter (in cm)"""
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
-    
+
     def produce_shade(self):
-        """Returns a float equivalent to height * diameter in m²"""
-        return (self._height * self.trunk_diameter / 100)
+        """Returns a float equivalent to height times trunk diameter (in m²)"""
+        return (self._height * self.trunk_diameter / 10000)
 
 
 class Vegetable(SecurePlant):
-    """Represents a vegetable as a subclass of SecurePlant"""
+    """Represents a Vegetable as a subclass of SecurePlant"""
     def __init__(self, name, height, age, harvest_season, nutritional_value):
-        """Initialize a Tree with SecurePlant attributes 
+        """Initialize a Tree with SecurePlant attributes
         as well as harvest season and nutritional value"""
         super().__init__(name, height, age)
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
 
 
-if __name__=="__main__":
-    oak = Tree("Oak", 200, 356, 5)
-    print(f"{oak.name} provides {oak.produce_shade()} square meters of shade\n")
+if __name__ == "__main__":
+    oak = Tree("Oak", 500, 356, 100)
+    elm = Tree("Elm", 2000, 720, 60)
     rose = Flower("Rose", 10, 2, "red")
+    marigold = Flower("Marigold", 15, 5, "yellow")
+    tomato = Vegetable("Tomato", 80, 90, "summer", "vitamin C")
+    bell_pepper = Vegetable("Bell Pepper", 120, 75, "autumn", "antioxidants")
+    print(f"{oak.name} provides {oak.produce_shade()} square meters of shade")
     print(f"{rose.name} is a {rose.color} flower")
     rose.bloom()

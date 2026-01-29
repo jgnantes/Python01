@@ -12,7 +12,7 @@ class SecurePlant:
         """Prints information about a SecurePlant instance"""
         print(f"{self.name}: {self._height}cm, {self._age} days old")
 
-    def get_height(self):
+    def get_height(self) -> int:
         """Getter Method to return height"""
         return self._height
 
@@ -22,7 +22,7 @@ class SecurePlant:
             raise ValueError("Height must be a non-negative value")
         self._height = new_height
 
-    def get_age(self):
+    def get_age(self) -> int:
         """Getter Method to return age"""
         return self._age
 

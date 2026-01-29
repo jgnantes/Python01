@@ -7,21 +7,24 @@ class Plant:
         self.age = age
 
 
-def ft_plant_factory(plant_list: list):
+def ft_plant_factory(plant_list: list) -> int:
+    """Prints the basic informaion of every Plant object from a list
+    and returns the amount of created objects"""
     i = 0
     print("=== Plant Factory Output ===")
     for plant in plant_list:
         print(f"Created: {plant.name} ({plant.height}cm, {plant.age} days)")
         i += 1
-    print("\nTotal plants created:", i)
+    return i
 
 
 if __name__ == "__main__":
     plant_list = [
-        Plant("Rose", 25, 30, 1),
-        Plant("Oak", 200, 365, 0.5),
-        Plant("Cactus", 15, 120, 0),
-        Plant("Sunflower", 80, 45, 3),
-        Plant("Fern", 15, 120, 2),
+        Plant("Rose", 25, 30),
+        Plant("Oak", 200, 365),
+        Plant("Cactus", 15, 120),
+        Plant("Sunflower", 80, 45),
+        Plant("Fern", 15, 120),
     ]
-    ft_plant_factory(plant_list)
+    i = ft_plant_factory(plant_list)
+    print("\nTotal plants created:", i)
