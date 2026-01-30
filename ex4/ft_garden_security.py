@@ -3,10 +3,11 @@ class SecurePlant:
     def __init__(self, name, height, age):
         """Initialize a SecurePlant with name, height (cm) and age in days"""
         if height < 0 or age < 0:
-            raise ValueError("Both height and age must be non-negative values")
-        self.name = name
-        self._height = height
-        self._age = age
+            print("Both height and age must be non-negative values")
+        else:
+            self.name = name
+            self._height = height
+            self._age = age
 
     def get_info(self):
         """Prints information about a SecurePlant instance"""
@@ -19,8 +20,9 @@ class SecurePlant:
     def set_height(self, new_height):
         """Setter Method to change height"""
         if new_height < 0:
-            raise ValueError("Height must be a non-negative value")
-        self._height = new_height
+            print("Height must be a non-negative value")
+        else:
+            self._height = new_height
 
     def get_age(self) -> int:
         """Getter Method to return age"""
@@ -29,8 +31,9 @@ class SecurePlant:
     def set_age(self, new_age):
         """Setter Method to change age"""
         if new_age < 0:
-            raise ValueError("Age must be a non-negative value")
-        self._age = new_age
+            print("Age must be a non-negative value")
+        else:
+            self._age = new_age
 
 
 if __name__ == "__main__":
