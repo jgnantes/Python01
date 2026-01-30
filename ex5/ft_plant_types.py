@@ -20,6 +20,10 @@ class Flower(SecurePlant):
         """Prints a message confirming th flower is blooming"""
         print(f"{self.name} is blooming beautifully!")
 
+    def get_info(self):
+        print(f"{self.name} (Flower): {self._height}cm tall,", end=" ")
+        print(f"{self._age} days old, {self.color} color")
+
 
 class Tree(SecurePlant):
     """Represents a tree as a subclass of SecurePlant"""
@@ -31,7 +35,12 @@ class Tree(SecurePlant):
 
     def produce_shade(self):
         """Returns a float equivalent to height times trunk diameter (in m²)"""
-        return (self._height * self.trunk_diameter / 10000)
+        return (int(self._height * self.trunk_diameter / 10000))
+
+    def get_info(self):
+        print(f"{self.name} (Tree): {self._height}cm tall,", end=" ")
+        print(f"{self._age} days old, {self.trunk_diameter}cm diameter")
+        print(f"{self.name} provides {self.produce_shade()} square meters of shade")
 
 
 class Vegetable(SecurePlant):
@@ -43,6 +52,13 @@ class Vegetable(SecurePlant):
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
 
+    def get_info(self):
+        print(f"{self.name} (Vegetable): {self._height}cm tall,", end=" ")
+        print(f"{self._age} days old, {self.harvest_season} harvest")
+
+    def get_nutritional_value(self):
+        print(f"{self.name} is rich in {self.nutritional_value}")
+
 
 if __name__ == "__main__":
     oak = Tree("Oak", 500, 356, 100)
@@ -51,6 +67,19 @@ if __name__ == "__main__":
     marigold = Flower("Marigold", 15, 5, "yellow")
     tomato = Vegetable("Tomato", 80, 90, "summer", "vitamin C")
     bell_pepper = Vegetable("Bell Pepper", 120, 75, "autumn", "antioxidants")
-    print(f"{oak.name} provides {oak.produce_shade()} square meters of shade")
-    print(f"{rose.name} is a {rose.color} flower")
+    print("=== Garden Plant Types ===\n")
+    print("== Flowers ==")
+    rose.get_info()
     rose.bloom()
+    marigold.get_info()
+    marigold.bloom()
+    print("\n")
+    print("== Trees ==")
+    oak.get_info()
+    elm.get_info()
+    print("\n")
+    print("== Vegetables ==")
+    tomato.get_info()
+    tomato.get_nutritional_value()
+    bell_pepper.get_info()
+    bell_pepper.get_nutritional_value()
