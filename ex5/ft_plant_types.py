@@ -33,7 +33,7 @@ class Tree(SecurePlant):
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
 
-    def produce_shade(self):
+    def produce_shade(self) -> int:
         """Returns a float equivalent to height times trunk diameter (in m²)"""
         return (int(self._height * self.trunk_diameter / 10000))
 

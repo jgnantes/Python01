@@ -13,35 +13,41 @@ class Plant:
         for _ in range(time_passed):
             self.age_a += 1
 
-    def grow(self, time_passed: int):
+    def grow(self, time_passed: int) -> int:
         """Changes a Plant instance's height based on its
         growth rate in cm/day and time passed passed in days"""
+        growth = 0
         for _ in range(time_passed):
-            self.height += self.growth_rate
+            growth += self.growth_rate
+        self.height += growth
+        return growth
 
-    def grow_older(self, time_passed: int):
+    def grow_older(self, time_passed: int) -> int:
         self.age(time_passed)
-        self.grow(time_passed)
+        growth = self.grow(time_passed)
+        return growth
 
     def get_info(self):
         """Prints information about a Plant instance"""
-        height_int = int(self.height)
-        print(f"{self.name}: {height_int}cm, {self.age_a} days old")
+        print(f"{self.name}: {self.height}cm, {self.age_a} days old")
 
 
 if __name__ == "__main__":
-    Rose = Plant("Rose", 25, 30)
-    Sunflower = Plant("Sunflower", 80, 45)
-    Cactus = Plant("Cactus", 15, 120)
+    Rose = Plant("Rose", 25, 49)
+    Sunflower = Plant("Sunflower", 75, 24)
+    Cactus = Plant("Cactus", 50, 49)
     print("=== Day 1 ===")
     Rose.get_info()
     Sunflower.get_info()
     Cactus.get_info()
     time_passed = 6
-    Rose.grow_older(time_passed)
-    Sunflower.grow_older(time_passed)
-    Cactus.grow_older(time_passed)
+    growth_rose = Rose.grow_older(time_passed)
+    growth_sunflower = Sunflower.grow_older(time_passed)
+    growth_cactus = Cactus.grow_older(time_passed)
     print(f"=== Day {time_passed + 1} ===")
     Rose.get_info()
+    print(f"Growth this week: {growth_rose}")
     Sunflower.get_info()
+    print(f"Growth this week: {growth_sunflower}")
     Cactus.get_info()
+    print(f"Growth this week: {growth_cactus}")

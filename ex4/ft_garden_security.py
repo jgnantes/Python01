@@ -3,7 +3,7 @@ class SecurePlant:
     def __init__(self, name, height, age):
         """Initialize a SecurePlant with name, height (cm) and age in days"""
         if height < 0 or age < 0:
-            print("Both height and age must be non-negative values")
+            raise ValueError("Both height and age must be non-negative values")
         else:
             self.name = name
             self._height = height
@@ -43,6 +43,7 @@ class SecurePlant:
 
 if __name__ == "__main__":
     print("=== Garden Security System ===\n")
+    print("== Rose ==")
     rose = SecurePlant("Rose", 15, 5)
     print(f"Plant created: {rose.name}\n")
     rose.get_info()
@@ -50,9 +51,14 @@ if __name__ == "__main__":
     rose.set_age(6)
     rose.get_info()
     print("\n")
+    print("== Cactus ==")
     cactus = SecurePlant("Cactus", 40, 10)
     print(f"Plant created: {cactus.name}\n")
     cactus.get_info()
     cactus.set_height(-5)
     cactus.set_height(-42)
     cactus.get_info()
+    print("\n")
+    print("== Sunflower ==")
+    sunflower = SecurePlant("Sunflower", -5, 30)
+    print("Plant not created\n")
