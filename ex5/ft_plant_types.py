@@ -40,7 +40,8 @@ class Tree(SecurePlant):
     def get_info(self):
         print(f"{self.name} (Tree): {self._height}cm tall,", end=" ")
         print(f"{self._age} days old, {self.trunk_diameter}cm diameter")
-        print(f"{self.name} provides {self.produce_shade()} square meters of shade")
+        print(f"{self.name} provides {self.produce_shade()}", end=' ') 
+        print("square meters of shade")
 
 
 class Vegetable(SecurePlant):
