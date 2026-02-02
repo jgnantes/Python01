@@ -118,6 +118,54 @@ class GardenManager:
                 self.stats.record_growth(size_result)
                 print(f"{p.name} grew {size_result}cm")
 
+        def report(self):
+            print(f"=== {self.owner}'s Garden Report ===")
+            print("Plants in garden:")
+            for p in self.plants:
+                p.describe()
+            regular, flowering, prize = self.stats.count_types(self.plants)
+            print(f"Plants added: {self.stats.plants_added}, ", end=' ')
+            print("Total growth: {self.stats.total_growth}cm")
+            print(f"Plant types: {regular} regular, {flowering} ", end=' ')
+            print("flowering, {prize} prize flowers")
+
+        def score(self):
+            total_height = 0
+            total_prize = 0
+            for p in self.plants:
+                total_height += p.height
+                if isinstance(p, PrizeFlower):
+                    total_prize += p.prize_points
+            return total_height + (10 * len(self.plants)) + total_prize
+
+
+        _total_gardens_managed = 0
+
+        def __init__(self):
+            self.gardens = {}
+
+        def add_gardens(self, owner):
+            if owner not in self.gardens:
+                self.gardens[owner] = GardenManager.Garden(owner)
+                GardenManager._total_gardens_mnaged =+ 1
+
+        def add_plant_to_garden(self, owner, plant):
+            if owner not in self.gardens:
+                self.add_gardens(owner)
+            self.gardens[owner].add_plant(plant)
+            print(f"Added {plant.name} to {owner}'s garden")
+
+        def get_garden(self, owner):
+            return self.gardens.get(owner)
+
+        @staticmethod
+        def validate_non_negative(value):
+            return value >= 0
+
+        @staticmethod
+        def validate_height(height):
+            return GardenManager.validate_non_negative(height)
+
 
 if __name__ == "__main__":
     Rose = PrizeFlower("Rose", 25, 49, "red", False, 80)
