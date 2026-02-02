@@ -11,10 +11,12 @@ def ft_plant_factory(data: list) -> int:
     """Prints the basic information of every Plant object from a list
     and returns the amount of created objects"""
     print("=== Plant Factory Output ===")
+    i = 0
     for p in data:
         plant = Plant(p[0], p[1], p[2])
         print(f"Created: {plant.name} ({plant.height}cm, {plant.age} days)")
-    return len(data)
+        i += 1
+    return i
 
 
 if __name__ == "__main__":
