@@ -1,4 +1,4 @@
-class SecurePlant:
+class Plant:
     """Represents a plant in the garden with basic, secure attributes"""
     def __init__(self, name, height, age):
         """Initialize a SecurePlant with name, height (cm) and age in days"""
@@ -9,7 +9,7 @@ class SecurePlant:
         self._age = age
 
 
-class Flower(SecurePlant):
+class Flower(Plant):
     """Represents a flower as a subclass of SecurePlant"""
     def __init__(self, name, height, age, color):
         """Initialize a Flower with SecurePlant attributes as well as color"""
@@ -25,7 +25,7 @@ class Flower(SecurePlant):
         print(f"{self._age} days old, {self.color} color")
 
 
-class Tree(SecurePlant):
+class Tree(Plant):
     """Represents a tree as a subclass of SecurePlant"""
     def __init__(self, name, height, age, trunk_diameter):
         """Initialize a Tree with SecurePlant attributes

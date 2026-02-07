@@ -1,8 +1,8 @@
 class Plant:
-    """Represents a plant in the garden with basic attributes"""
+    """Represents a plant in the garden with basic, secure attributes"""
     plant_type = "regular"
 
-    def __init__(self, name, height, age):
+    def __init__(self, name: int, height: int, age: int):
         """Initialize a Plant instance with
         name, height (cm) and age in days"""
         if height < 0 or age < 0:
@@ -100,12 +100,12 @@ class GardenManager:
             """Counts new plants added"""
             self.plants_added += 1
 
-        def record_growth(self, growth):
+        def record_growth(self, growth: int):
             """Counts total growth of
             all the plants in a garden"""
             self.total_growth += growth
 
-        def count_types(self, plant_list):
+        def count_types(self, plant_list: list):
             """Counts types of plants in a garden"""
             regular = 0
             flowering = 0
@@ -121,19 +121,19 @@ class GardenManager:
 
     class Garden:
         """Represents a garden with an owner and multiple plants"""
-        def __init__(self, owner):
+        def __init__(self, owner: str):
             """Initializes a garden with its owner name and an
             empty plant list, as well as initializes its stats"""
             self.owner = owner
             self.plant_list = []
             self.stats = GardenManager.GardenStats()
 
-        def add_plant(self, plant):
+        def add_plant(self, plant: Plant):
             """Adds a plant to a garden"""
             self.plant_list.append(plant)
             self.stats.record_add()
 
-        def help_all_grow(self, growth=1, time=1):
+        def help_all_grow(self, growth: int=1, time: int=1):
             """Runs grow() and GardeStats.record_growth() for each
             plant in a garden, and prints results"""
             print(f"\n{self.owner} is helping all plants grow")
@@ -174,14 +174,14 @@ class GardenManager:
         """Initializes the Garden Manager with an empty garden list"""
         self.gardens = {}
 
-    def add_garden(self, owner):
+    def add_garden(self, owner: str):
         """Adds a new garden to a Garden Manager if the owner
         doesn't already have one in it"""
         if owner not in self.gardens:
             self.gardens[owner] = GardenManager.Garden(owner)
             GardenManager._total_gardens_managed += 1
 
-    def add_plant_to_garden(self, owner, plant):
+    def add_plant_to_garden(self, owner: str, plant: Plant):
         """Adds a plant to a garden within the Garden Manager"""
         if owner not in self.gardens:
             self.add_garden(owner)
@@ -193,7 +193,7 @@ class GardenManager:
         return self.gardens.get(owner)
 
     @staticmethod
-    def validate_non_negative(value):
+    def validate_non_negative(value: int):
         """Returns False if value is negative"""
         return value >= 0
 
@@ -203,7 +203,7 @@ class GardenManager:
         return cls._total_gardens_managed
 
     @classmethod
-    def create_garden_networks(cls, owners):
+    def create_garden_networks(cls, owners: tuple):
         """Creates and initializes one
         garden for each owner in a list"""
         manager = cls()
