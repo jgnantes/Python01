@@ -1,6 +1,6 @@
 class Plant:
     """Represents a plant in the garden with basic attributes"""
-    def __init__(self, name, height, age):
+    def __init__(self, name: str, height: int, age: int):
         """Initializes a Plant with name, height (cm), age in days"""
         self.name = name
         self.height = height
@@ -10,7 +10,6 @@ class Plant:
 def ft_plant_factory(data: list) -> int:
     """Prints the basic information of every Plant object from a list
     and returns the amount of created objects"""
-    print("=== Plant Factory Output ===")
     i = 0
     for p in data:
         plant = Plant(p[0], p[1], p[2])
@@ -20,6 +19,7 @@ def ft_plant_factory(data: list) -> int:
 
 
 if __name__ == "__main__":
+    print("=== Plant Factory Output ===")
     data = [
         ("Rose", 25, 30),
         ("Oak", 200, 365),
