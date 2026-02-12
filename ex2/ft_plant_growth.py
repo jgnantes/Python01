@@ -1,6 +1,6 @@
 class Plant:
     """Represents a plant in the garden with basic attributes"""
-    def __init__(self, name, height, age_a):
+    def __init__(self, name: str, height: int, age_a: int):
         """Initializes a Plant with name, height (cm), age in days
         and growth_rate in cm/day"""
         self.name = name
