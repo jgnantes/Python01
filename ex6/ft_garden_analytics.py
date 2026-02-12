@@ -12,7 +12,7 @@ class Plant:
             self._height = height
             self._age = age
 
-    def grow(self, growth=1, time=1) -> int:
+    def grow(self, growth: int=1, time: int=1) -> int:
         """Raises a Plant instance's height"""
         if growth <= 0:
             print("Growth can't be negative or zero [REJECTED]")
@@ -32,11 +32,11 @@ class FloweringPlant(Plant):
 
     def __init__(
         self,
-        name,
-        height,
-        age,
-        color="unknown",
-        blooming=True
+        name: str,
+        height: int,
+        age: int,
+        color: str="unknown",
+        blooming: bool=True,
     ):
         """Initialize a FloweringPlant instance with all Plant attributes
         as well as color and a booleans for blooming status"""
@@ -61,12 +61,12 @@ class PrizeFlower(FloweringPlant):
 
     def __init__(
         self,
-        name,
-        height,
-        age,
-        color="unknown",
-        blooming=True,
-        prize_points=0
+        name: str,
+        height: int,
+        age: int,
+        color: str="unknown",
+        blooming: bool=True,
+        prize_points: int=0
     ):
         """Initialize a PrizeFlower instance with all FloweringPlant attributes
         as well as prize points"""
@@ -86,7 +86,7 @@ class PrizeFlower(FloweringPlant):
 
 class GardenManager:
     """Manages multiple garden for each owner"""
-    _total_gardens_managed = 0
+    _total_gardens_managed: int = 0
 
     class GardenStats:
         """Helps calculate, register and manage garden data"""
@@ -188,7 +188,7 @@ class GardenManager:
         self.gardens[owner].add_plant(plant)
         print(f"Added {plant.name} to {owner}'s garden")
 
-    def get_garden(self, owner):
+    def get_garden(self, owner: str):
         """Returns the garden of an owner"""
         return self.gardens.get(owner)
 
