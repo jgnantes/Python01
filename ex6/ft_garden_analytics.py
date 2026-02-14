@@ -81,7 +81,7 @@ class PrizeFlower(FloweringPlant):
             status = "(blooming)"
         else:
             status = "(not blooming)"
-        print(f"-> {self.name}: {self._height}cm, {self.color}", end=' ')
+        print(f"- {self.name}: {self._height}cm, {self.color}", end=' ')
         print(f"flowers {status}, Prize points: {self.prize_points}")
 
 
