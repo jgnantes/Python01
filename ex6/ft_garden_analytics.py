@@ -12,7 +12,7 @@ class Plant:
             self._height = height
             self._age = age
 
-    def grow(self, growth: int=1, time: int=1) -> int:
+    def grow(self, growth: int = 1, time: int = 1) -> int:
         """Raises a Plant instance's height"""
         if growth <= 0:
             print("Growth can't be negative or zero [REJECTED]")
@@ -35,8 +35,8 @@ class FloweringPlant(Plant):
         name: str,
         height: int,
         age: int,
-        color: str="unknown",
-        blooming: bool=True,
+        color: str = "unknown",
+        blooming: bool = True,
     ):
         """Initialize a FloweringPlant instance with all Plant attributes
         as well as color and a booleans for blooming status"""
@@ -65,9 +65,9 @@ class PrizeFlower(FloweringPlant):
         name: str,
         height: int,
         age: int,
-        color: str="unknown",
-        blooming: bool=True,
-        prize_points: int=0
+        color: str = "unknown",
+        blooming: bool = True,
+        prize_points: int = 0
     ):
         """Initialize a PrizeFlower instance with all FloweringPlant attributes
         as well as prize points"""
@@ -134,7 +134,7 @@ class GardenManager:
             self.plant_list.append(plant)
             self.stats.record_add()
 
-        def help_all_grow(self, growth: int=1, time: int=1):
+        def help_all_grow(self, growth: int = 1, time: int = 1):
             """Runs grow() and GardeStats.record_growth() for each
             plant in a garden, and prints results"""
             print(f"{self.owner} is helping all plants grow...")
