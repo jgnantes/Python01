@@ -23,7 +23,7 @@ class Plant:
 
     def describe(self):
         """Prints a Plant instance's name and current height"""
-        print(f"-> {self.name}: {self._height}cm")
+        print(f"- {self.name}: {self._height}cm")
 
 
 class FloweringPlant(Plant):
@@ -51,8 +51,9 @@ class FloweringPlant(Plant):
             status = "(blooming)"
         else:
             status = "(not blooming)"
-        print(f"-> {self.name}: {self._height}cm,", end=' ')
-        print(f"{self.color} flowers {status}")
+        print(
+            f"- {self.name}: {self._height}cm, {self.color} flowers {status}"
+            )
 
 
 class PrizeFlower(FloweringPlant):
@@ -81,7 +82,7 @@ class PrizeFlower(FloweringPlant):
         else:
             status = "(not blooming)"
         print(f"-> {self.name}: {self._height}cm, {self.color}", end=' ')
-        print(f"flowers {status}, {self.prize_points} prize points")
+        print(f"flowers {status}, Prize points: {self.prize_points}")
 
 
 class GardenManager:
@@ -136,7 +137,7 @@ class GardenManager:
         def help_all_grow(self, growth: int=1, time: int=1):
             """Runs grow() and GardeStats.record_growth() for each
             plant in a garden, and prints results"""
-            print(f"\n{self.owner} is helping all plants grow")
+            print(f"{self.owner} is helping all plants grow...")
             total_growth = 0
             for p in self.plant_list:
                 plant_growth = p.grow(growth, time)
@@ -152,10 +153,10 @@ class GardenManager:
             for p in self.plant_list:
                 p.describe()
             regular, flowering, prize = self.stats.count_types(self.plant_list)
-            print(f"\nPlants added: {self.stats.plants_added}")
+            print(f"Plants added: {self.stats.plants_added},", end=' ')
             print(f"Total growth: {self.stats.total_growth}cm")
             print(f"Plant types: {regular} regular, {flowering}", end=' ')
-            print(f"flowering, {prize} prize flowers\n")
+            print(f"flowering, {prize} prize flowers")
 
         def score(self):
             """Calculates the garden's score based on prize points
@@ -212,39 +213,38 @@ class GardenManager:
         return manager
 
     def garden_scores(self):
-        """Runs score() for each existing garden and returns a list"""
+        """Runs score() for each existing garden and returns a dict"""
         scores = {}
-        print("\n")
         for owner, garden in self.gardens.items():
             scores[owner] = garden.score()
-            print(f"{owner}'s garden score is: {scores[owner]}")
+        return scores
 
 
 if __name__ == "__main__":
-    owners = ("João", "Maria", "José")
-    manager = GardenManager.create_garden_networks(owners)
+    print("=== Garden Management System Demo ===")
 
-    rose = PrizeFlower("Rose", 25, 4, "red", True, 500)
-    marigold = FloweringPlant("Marigold", 25, 4, "yellow", False)
-    oak = Plant("Oak", 100, 49)
-    lilypad = FloweringPlant("Lilypad", 5, 99, "white", False)
-    elm = Plant("Elm", 200, 50)
+    manager = GardenManager.create_garden_networks(("Alice", "Bob"))
 
-    manager.add_plant_to_garden("João", rose)
-    manager.add_plant_to_garden("Maria", marigold)
-    manager.add_plant_to_garden("José", oak)
-    manager.add_plant_to_garden("João", lilypad)
-    manager.add_plant_to_garden("Maria", elm)
+    oak = Plant("Oak Tree", 100, 1825)
+    rose = FloweringPlant("Rose", 25, 30, "red", True)
+    sunflower = PrizeFlower("Sunflower", 50, 60, "yellow", True, 10)
 
-    growth = 5
-    if GardenManager.validate_non_negative(growth) is True:
-        manager.gardens["Maria"].help_all_grow(5, 2)
+    manager.add_plant_to_garden("Alice", oak)
+    manager.add_plant_to_garden("Alice", rose)
+    manager.add_plant_to_garden("Alice", sunflower)
 
-    joaos_garden = manager.get_garden("João")
-    joaos_garden.report()
-    manager.gardens["Maria"].report()
-    manager.gardens["José"].report()
+    bob_plant = Plant("Basil", 82, 20)
+    manager.add_plant_to_garden("Bob", bob_plant)
 
-    manager.garden_scores()
+    alice_garden = manager.get_garden("Alice")
+    alice_garden.help_all_grow(1, 1)
+    alice_garden.report()
+
+    validation_result = GardenManager.validate_non_negative(1)
+    print(f"Height validation test: {validation_result}")
+
+    scores = manager.garden_scores()
+    print(f"Garden scores - Alice: {scores['Alice']}, Bob: {scores['Bob']}")
+
     total = GardenManager.total_gardens_managed()
-    print(f"\nTotal Gardens Managed: {total}")
+    print(f"Total gardens managed: {total}")
