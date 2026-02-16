@@ -24,10 +24,10 @@ class SecurePlant:
             print(
                 f"Invalid operation attempted: height {new_height} [REJECTED]"
                 )
-            print("Security: Negative height rejected\n")
+            print("Security: Negative height rejected")
         else:
             self._height = new_height
-            print(f"{self.name}'s height updated: {new_height}cm [OK]")
+            print(f"Height updated: {new_height}cm [OK]")
 
     def get_age(self) -> int:
         """Getter Method to return age"""
@@ -36,18 +36,20 @@ class SecurePlant:
     def set_age(self, new_age: int):
         """Setter Method to change age"""
         if new_age < 0:
-            print(f"Invalid operation attempted: age {new_age} [REJECTED]")
-            print("Security: Negative age rejected\n")
+            print(
+                f"Invalid operation attempted: age {new_age} [REJECTED]"
+                )
+            print("Security: Negative age rejected")
         else:
             self._age = new_age
-            print(f"{self.name}'s age updated: {new_age} days [OK]")
+            print(f"Age updated: {new_age} days [OK]")
 
 
 if __name__ == "__main__":
     print("=== Garden Security System ===\n")
     print("== Rose ==")
     rose = SecurePlant("Rose", 15, 5)
-    print(f"Plant created: {rose.name}\n")
+    print(f"Plant created: {rose.name}")
     rose.get_info()
     rose.set_height(20)
     rose.set_age(6)
@@ -55,12 +57,12 @@ if __name__ == "__main__":
     print("\n")
     print("== Cactus ==")
     cactus = SecurePlant("Cactus", 40, 10)
-    print(f"Plant created: {cactus.name}\n")
+    print(f"Plant created: {cactus.name}")
     cactus.get_info()
     cactus.set_height(-5)
     cactus.set_height(-42)
     cactus.get_info()
-    print("\n")
+    # print("\n")
     # print("== Sunflower ==")
     # sunflower = SecurePlant("Sunflower", -5, 30)
-    # print("Plant not created\n")
+    # print("Plant not created")
