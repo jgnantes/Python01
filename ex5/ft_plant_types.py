@@ -37,7 +37,7 @@ class Tree(Plant):
         """Returns a float equivalent to height times trunk diameter (in m²)"""
         return ((self._height / 100) * (self._height / 100) * 3.14)
 
-    def get_info(self):
+    def get_info(self) -> None:
         print(f"{self.name} (Tree): {self._height}cm tall,", end=" ")
         print(f"{self._age} days old, {self.trunk_diameter}cm diameter")
         print(f"{self.name} provides {self.produce_shade()}", end=' ')
@@ -60,11 +60,11 @@ class Vegetable(Plant):
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
 
-    def get_info(self):
+    def get_info(self) -> None:
         print(f"{self.name} (Vegetable): {self._height}cm tall,", end=" ")
         print(f"{self._age} days old, {self.harvest_season} harvest")
 
-    def get_nutritional_value(self):
+    def get_nutritional_value(self) -> None:
         print(f"{self.name} is rich in {self.nutritional_value}")
 
 

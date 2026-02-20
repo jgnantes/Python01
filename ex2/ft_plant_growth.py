@@ -6,7 +6,7 @@ class Plant:
         self.height = height
         self.age_a = age_a
 
-    def age(self, time_passed: int):
+    def age(self, time_passed: int) -> None:
         """Changes a Plant instance's age based on time passed in days"""
         for _ in range(time_passed):
             self.age_a += 1
@@ -25,7 +25,7 @@ class Plant:
         growth = self.grow(time_passed, growth_rate)
         return growth
 
-    def get_info(self):
+    def get_info(self) -> None:
         """Prints information about a Plant instance"""
         print(f"{self.name}: {self.height}cm, {self.age_a} days old")
 

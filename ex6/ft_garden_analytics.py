@@ -21,7 +21,7 @@ class Plant:
             self._height += growth
         return growth * time
 
-    def describe(self):
+    def describe(self) -> None:
         """Prints a Plant instance's name and current height"""
         print(f"- {self.name}: {self._height}cm")
 
@@ -44,7 +44,7 @@ class FloweringPlant(Plant):
         self.color = color
         self.blooming = blooming
 
-    def describe(self):
+    def describe(self) -> None:
         """Defines a blooming status and prints a FloweringPlant
         instance's name, current height, color and blooming status"""
         if self.blooming is True:
@@ -74,7 +74,7 @@ class PrizeFlower(FloweringPlant):
         super().__init__(name, height, age, color, blooming)
         self.prize_points = prize_points
 
-    def describe(self):
+    def describe(self) -> None:
         """Defines a blooming status and prints a FloweringPlant
         instance's name, current height, color and blooming status"""
         if self.blooming is True:
@@ -97,16 +97,16 @@ class GardenManager:
             self.plants_added = 0
             self.total_growth = 0
 
-        def record_add(self):
+        def record_add(self) -> None:
             """Counts new plants added"""
             self.plants_added += 1
 
-        def record_growth(self, growth: int):
+        def record_growth(self, growth: int) -> None:
             """Counts total growth of
             all the plants in a garden"""
             self.total_growth += growth
 
-        def count_types(self, plant_list: list):
+        def count_types(self, plant_list: list) -> None:
             """Counts types of plants in a garden"""
             regular = 0
             flowering = 0
@@ -129,12 +129,12 @@ class GardenManager:
             self.plant_list = []
             self.stats = GardenManager.GardenStats()
 
-        def add_plant(self, plant: Plant):
+        def add_plant(self, plant: Plant) -> None:
             """Adds a plant to a garden"""
             self.plant_list.append(plant)
             self.stats.record_add()
 
-        def help_all_grow(self, growth: int = 1, time: int = 1):
+        def help_all_grow(self, growth: int = 1, time: int = 1) -> None:
             """Runs grow() and GardeStats.record_growth() for each
             plant in a garden, and prints results"""
             print(f"{self.owner} is helping all plants grow...")
@@ -145,7 +145,7 @@ class GardenManager:
                 self.stats.record_growth(plant_growth)
                 print(f"{p.name} grew {plant_growth}cm")
 
-        def report(self):
+        def report(self) -> None:
             """Runs describe() for each plant and prints other
             stats such as total plants, growth and plant types"""
             print(f"\n=== {self.owner}'s Garden Report ===")
@@ -158,8 +158,8 @@ class GardenManager:
             print(f"Plant types: {regular} regular, {flowering}", end=' ')
             print(f"flowering, {prize} prize flowers")
 
-        def score(self):
-            """Calculates the garden's score based on prize points
+        def score(self) -> None:
+            """Calculates the garden's score based on prize points,
             total height & growth and the amount of plants it has"""
             total_plants = 0
             total_height = 0
@@ -175,36 +175,36 @@ class GardenManager:
         """Initializes the Garden Manager with an empty garden list"""
         self.gardens = {}
 
-    def add_garden(self, owner: str):
+    def add_garden(self, owner: str) -> None:
         """Adds a new garden to a Garden Manager if the owner
         doesn't already have one in it"""
         if owner not in self.gardens:
             self.gardens[owner] = GardenManager.Garden(owner)
             GardenManager._total_gardens_managed += 1
 
-    def add_plant_to_garden(self, owner: str, plant: Plant):
+    def add_plant_to_garden(self, owner: str, plant: Plant) -> None:
         """Adds a plant to a garden within the Garden Manager"""
         if owner not in self.gardens:
             self.add_garden(owner)
         self.gardens[owner].add_plant(plant)
         print(f"Added {plant.name} to {owner}'s garden")
 
-    def get_garden(self, owner: str):
+    def get_garden(self, owner: str) -> None:
         """Returns the garden of an owner"""
         return self.gardens.get(owner)
 
     @staticmethod
-    def validate_non_negative(value: int):
+    def validate_non_negative(value: int) -> None:
         """Returns False if value is negative"""
         return value >= 0
 
     @classmethod
-    def total_gardens_managed(cls):
+    def total_gardens_managed(cls) -> None:
         """Returns the total amount of gardens from all managers"""
         return cls._total_gardens_managed
 
     @classmethod
-    def create_garden_networks(cls, owners: tuple):
+    def create_garden_networks(cls, owners: tuple) -> None:
         """Creates and initializes one
         garden for each owner in a list"""
         manager = cls()
@@ -212,7 +212,7 @@ class GardenManager:
             manager.add_garden(owner)
         return manager
 
-    def garden_scores(self):
+    def garden_scores(self) -> None:
         """Runs score() for each existing garden and returns a dict"""
         scores = {}
         for owner, garden in self.gardens.items():

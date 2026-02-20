@@ -9,7 +9,7 @@ class SecurePlant:
             self._height = height
             self._age = age
 
-    def get_info(self):
+    def get_info(self) -> None:
         """Prints information about a SecurePlant instance"""
         print(f"Current plant: {self.name}", end=" ")
         print(f"({self._height}cm, {self._age} days)")
@@ -18,7 +18,7 @@ class SecurePlant:
         """Getter Method to return height"""
         return self._height
 
-    def set_height(self, new_height: int):
+    def set_height(self, new_height: int) -> None:
         """Setter Method to change height"""
         if new_height < 0:
             print(
@@ -33,7 +33,7 @@ class SecurePlant:
         """Getter Method to return age"""
         return self._age
 
-    def set_age(self, new_age: int):
+    def set_age(self, new_age: int) -> None:
         """Setter Method to change age"""
         if new_age < 0:
             print(
