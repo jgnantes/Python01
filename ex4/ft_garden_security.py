@@ -1,6 +1,6 @@
 class SecurePlant:
     """Represents a plant in the garden with basic, secure attributes"""
-    def __init__(self, name: str, height: int, age: int):
+    def __init__(self, name: str, height: int, age: int) -> None:
         """Initialize a SecurePlant with name, height (cm) and age in days"""
         if height < 0 or age < 0:
             raise ValueError("Both height and age must be non-negative values")

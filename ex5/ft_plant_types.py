@@ -1,6 +1,6 @@
 class Plant:
     """Represents a plant in the garden with basic, secure attributes"""
-    def __init__(self, name: str, height: int, age: int):
+    def __init__(self, name: str, height: int, age: int) -> None:
         """Initialize a Plant with name, height (cm) and age in days"""
         if height < 0 or age < 0:
             raise ValueError("Both height and age must be non-negative values")
@@ -11,7 +11,7 @@ class Plant:
 
 class Flower(Plant):
     """Represents a flower as a subclass of Plant"""
-    def __init__(self, name: str, height: int, age: int, color: str):
+    def __init__(self, name: str, height: int, age: int, color: str) -> None:
         """Initialize a Flower with Plant attributes as well as color"""
         super().__init__(name, height, age)
         self.color = color
@@ -27,7 +27,13 @@ class Flower(Plant):
 
 class Tree(Plant):
     """Represents a tree as a subclass of Plant"""
-    def __init__(self, name: str, height: int, age: int, trunk_diameter: int):
+    def __init__(
+        self,
+        name: str,
+        height: int,
+        age: int,
+        trunk_diameter: int
+    ) -> None:
         """Initialize a Tree with Plant attributes
         as well as trunk diameter (in cm)"""
         super().__init__(name, height, age)
@@ -53,7 +59,7 @@ class Vegetable(Plant):
         age: int,
         harvest_season: str,
         nutritional_value: str
-    ):
+    ) -> None:
         """Initialize a Tree with Plant attributes
         as well as harvest season and nutritional value"""
         super().__init__(name, height, age)

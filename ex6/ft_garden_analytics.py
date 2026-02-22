@@ -2,7 +2,7 @@ class Plant:
     """Represents a plant in the garden with basic, secure attributes"""
     plant_type = "regular"
 
-    def __init__(self, name: int, height: int, age: int):
+    def __init__(self, name: int, height: int, age: int) -> None:
         """Initialize a Plant instance with
         name, height (cm) and age in days"""
         if height < 0 or age < 0:
@@ -37,7 +37,7 @@ class FloweringPlant(Plant):
         age: int,
         color: str = "unknown",
         blooming: bool = True,
-    ):
+    ) -> None:
         """Initialize a FloweringPlant instance with all Plant attributes
         as well as color and a booleans for blooming status"""
         super().__init__(name, height, age)
@@ -68,7 +68,7 @@ class PrizeFlower(FloweringPlant):
         color: str = "unknown",
         blooming: bool = True,
         prize_points: int = 0
-    ):
+    ) -> None:
         """Initialize a PrizeFlower instance with all FloweringPlant attributes
         as well as prize points"""
         super().__init__(name, height, age, color, blooming)
@@ -91,7 +91,7 @@ class GardenManager:
 
     class GardenStats:
         """Helps calculate, register and manage garden data"""
-        def __init__(self):
+        def __init__(self) -> None:
             """Initializes the class GardenStats with
             total plants added and total growth"""
             self.plants_added = 0
@@ -122,7 +122,7 @@ class GardenManager:
 
     class Garden:
         """Represents a garden with an owner and multiple plants"""
-        def __init__(self, owner: str):
+        def __init__(self, owner: str) -> None:
             """Initializes a garden with its owner name and an
             empty plant list, as well as initializes its stats"""
             self.owner = owner
